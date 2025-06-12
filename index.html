@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="NOVA LITE OS - Lightweight Operating System by ZakariaDZ">
+<meta name="keywords" content="NOVA LITE OS, Lite OS, zakaria os, system for old pc, windows lite, fast os, NOVA OS download">
+<meta name="author" content="ZakariaDZ">
+ <link rel="icon" href="https://github.com/nova-lite-os-by-zakariadz/NOVA-LITE-OS/blob/main/Icon.png?raw=true" type="image/png">
+    <title>تحميل NOVA LITE OS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0078d4, #1e3a8a, #000);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #0078d4, #1e3a8a, #3b82f6, #1d4ed8);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            background: linear-gradient(45deg, #ffffff, #e0e7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .download-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .download-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transform: rotate(45deg);
+            transition: all 0.5s ease;
+            opacity: 0;
+        }
+
+        .download-card:hover::before {
+            animation: shimmer 1s ease;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); opacity: 0; }
+        }
+
+        .download-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .windows-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+        }
+
+        .download-btn {
+            background: linear-gradient(45deg, #0078d4, #1e40af);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 120, 212, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 120, 212, 0.6);
+            background: linear-gradient(45deg, #1e40af, #0078d4);
+        }
+
+        .version-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .version-desc {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .social-section {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .discord-btn {
+            background: linear-gradient(45deg, #5865f2, #4f46e5);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(88, 101, 242, 0.4);
+            margin-bottom: 2rem;
+        }
+
+        .discord-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(88, 101, 242, 0.6);
+            background: linear-gradient(45deg, #4f46e5, #5865f2);
+        }
+
+        .all-sites-section {
+            margin-top: 2rem;
+        }
+
+        .all-sites-btn {
+            background: linear-gradient(45deg, #10b981, #059669);
+            color: white;
+            text-decoration: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+        }
+
+        .all-sites-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+            background: linear-gradient(45deg, #059669, #10b981);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 3rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+            
+            .download-section {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            
+            .download-card {
+                padding: 1.5rem;
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: white;
+            border-radius: 50%;
+            animation: sparkle 2s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { opacity: 0; transform: scale(0); }
+            50% { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚀</div>
+            <h1 class="title">NOVA LITE OS</h1>
+            <p class="subtitle">اختر الإصدار المناسب لك من نظام التشغيل الجديد</p>
+        </div>
+
+        <div class="download-section">
+            <div class="download-card">
+                <div class="windows-icon">💎</div>
+                <h2 class="version-title">NOVA LITE 11</h2>
+                <p class="version-desc">أحدث إصدار من NOVA LITE OS مع واجهة متطورة وأداء محسن (2025)</p>
+                <a href="#" class="download-btn" onclick="showExample()">تحميل NOVA LITE 11</a>
+            </div>
+
+            <div class="download-card">
+                <div class="windows-icon">⚡</div>
+                <h2 class="version-title">NOVA LITE 10</h2>
+                <p class="version-desc">الإصدار المستقر والسريع من NOVA LITE OS للأجهزة القديمة</p>
+                <a href="#" class="download-btn" onclick="showExample()">تحميل NOVA LITE 10</a>
+            </div>
+        </div>
+
+        <div class="social-section">
+            <a href="https://discord.com/channels/1382545526041477140/1382547855679426684" class="discord-btn" target="_blank">
+                <span>💬</span>
+                انضم إلى Discord
+            </a>
+            
+            <div class="all-sites-section">
+                <a href="#" class="all-sites-btn" onclick="showExample()">
+                    🌐 جميع المواقع
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 NOVA LITE OS - جميع الحقوق محفوظة</p>
+    </div>
+
+    <script>
+        // Add sparkle effects
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.className = 'sparkle';
+            sparkle.style.left = Math.random() * 100 + '%';
+            sparkle.style.top = Math.random() * 100 + '%';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles periodically
+        setInterval(createSparkle, 1000);
+
+        // Example function for demonstration
+        function showExample() {
+            alert('هذا مثال للتوضيح - يرجى استبدال الروابط بالروابط الفعلية الخاصة بك');
+        }
+
+        // Smooth scrolling animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.download-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.2}s`;
+                card.style.animation = 'fadeInUp 0.8s ease forwards';
+            });
+        });
+
+        // Add CSS for fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
