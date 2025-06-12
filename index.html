@@ -15,6 +15,34 @@
             box-sizing: border-box;
         }
 
+
+        /* إخفاء المؤشر الافتراضي للحواسيب فقط */
+        @media (hover: hover) and (pointer: fine) {
+            * {
+                cursor: none !important;
+            }
+        }
+
+        /* الظل الأصفر الصغير والخفيف */
+        #cursor-shadow {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 0, 0.6) 0%, rgba(255, 255, 0, 0.3) 50%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s ease-out;
+            display: none;
+        }
+
+        /* عرض الظل للحواسيب فقط */
+        @media (hover: hover) and (pointer: fine) {
+            #cursor-shadow {
+                display: block;
+            }
+        }
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0078d4, #1e3a8a, #000);
@@ -290,8 +318,8 @@
     </style>
 </head>
 <body>
+     <div id="cursor-shadow"></div>
     <div class="animated-bg"></div>
-    
     <div class="container">
         <div class="header">
             <div class="logo">🚀</div>
@@ -334,6 +362,7 @@
     </div>
 
     <script>
+        
         // Add sparkle effects
         function createSparkle() {
             const sparkle = document.createElement('div');
@@ -347,6 +376,31 @@
             }, 2000);
         }
 
+
+  // متغيرات
+        let cursorShadow = document.getElementById('cursor-shadow');
+        
+        // التحقق من أن الجهاز يدعم hover (حاسوب)
+        if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            // تتبع حركة الفأرة
+            document.addEventListener('mousemove', function(e) {
+                cursorShadow.style.left = (e.clientX - 10.5) + 'px';
+                cursorShadow.style.top = (e.clientY - 10.5) + 'px';
+            });
+
+            // إخفاء الظل عند خروج الفأرة
+            document.addEventListener('mouseleave', function() {
+                cursorShadow.style.opacity = '0';
+            });
+
+            // إظهار الظل عند دخول الفأرة
+            document.addEventListener('mouseenter', function() {
+                cursorShadow.style.opacity = '1';
+            });
+        }
+
+
+        
         // Create sparkles periodically
         setInterval(createSparkle, 1000);
 
