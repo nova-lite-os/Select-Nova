@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,16 +13,22 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        /* إخفاء المؤشر الافتراضي للحواسيب فقط */
+        /* Hide default cursor for computers only */
         @media (hover: hover) and (pointer: fine) {
             * {
                 cursor: none !important;
             }
         }
 
-        /* الظل الأصفر للماوس */
+        /* Yellow mouse shadow */
         #cursor-shadow {
             position: fixed;
             width: 20px;
@@ -69,7 +75,7 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* النجوم */
+        /* Stars */
         .stars {
             position: fixed;
             top: 0;
@@ -93,7 +99,7 @@
             100% { opacity: 1; }
         }
 
-        /* صفحة الحماية */
+        /* Protection page */
         .protection-page {
             position: fixed;
             top: 0;
@@ -171,7 +177,7 @@
             font-weight: bold;
         }
 
-        /* الصفحة الرئيسية */
+        /* Main page */
         .main-page {
             display: none;
             z-index: 10;
@@ -387,15 +393,15 @@
     <div class="animated-bg"></div>
     <div class="stars" id="stars"></div>
 
-    <!-- صفحة الحماية -->
+    <!-- Protection page -->
     <div class="protection-page" id="protectionPage">
         <div class="protection-container">
             <div class="warning-icon">🚫</div>
-            <div class="protection-title">وصول محظور!</div>
+            <div class="protection-title">Access Denied!</div>
             <div class="protection-message">
-                لا يمكن الدخول إلى هذا الموقع مباشرة<br>
-                يجب الدخول من خلال موقع <strong>NOVA LITE OS</strong> الرسمي<br>
-                <strong>الدخول المباشر غير مسموح لأسباب أمنية</strong>
+                This website cannot be accessed directly<br>
+                You must enter through the official <strong>NOVA LITE OS</strong> website<br>
+                <strong>Direct access is not allowed for security reasons</strong>
             </div>
             
             <a href="https://nova-lite-os.github.io/NOVA-LITE-OS/" class="go-nova-btn">
@@ -403,205 +409,328 @@
             </a>
             
             <div class="countdown-timer">
-                سيتم إعادة التوجيه خلال <span id="timer">10</span> ثانية
+                Redirecting in <span id="timer">10</span> seconds
             </div>
         </div>
     </div>
 
-    <!-- الصفحة الرئيسية -->
+    <!-- Main page -->
     <div class="main-page" id="mainPage">
         <div class="container">
             <div class="header">
                 <div class="logo">🚀</div>
                 <h1 class="title">NOVA SELECT</h1>
-                <p class="subtitle">اختر الإصدار المناسب لك من نظام التشغيل الجديد</p>
+                <p class="subtitle">Choose the right version for you from the new operating system</p>
             </div>
 
             <div class="download-section">
                 <div class="download-card">
                     <div class="windows-icon">💎</div>
                     <h2 class="version-title">NOVA LITE 11</h2>
-                    <p class="version-desc">أحدث إصدار من NOVA LITE OS مع واجهة متطورة وأداء محسن (2025)</p>
-                    <a href="#" class="download-btn" onclick="showExample()">تحميل NOVA LITE 11</a>
+                    <p class="version-desc">Latest version of NOVA LITE OS with advanced interface and enhanced performance (2025)</p>
+                    <a href="#" class="download-btn" onclick="showExample()">Download NOVA LITE 11</a>
                 </div>
 
                 <div class="download-card">
                     <div class="windows-icon">⚡</div>
                     <h2 class="version-title">NOVA LITE 10</h2>
-                    <p class="version-desc">الإصدار المستقر والسريع من NOVA LITE OS للأجهزة القديمة</p>
-                    <a href="#" class="download-btn" onclick="showExample()">تحميل NOVA LITE 10</a>
+                    <p class="version-desc">Stable and fast version of NOVA LITE OS for older devices</p>
+                    <a href="#" class="download-btn" onclick="showExample()">Download NOVA LITE 10</a>
                 </div>
             </div>
 
             <div class="social-section">
                 <a href="https://discord.com/channels/1382545526041477140/1382547855679426684" class="discord-btn" target="_blank">
                     <span>💬</span>
-                    انضم إلى Discord
+                    Join Discord
                 </a>
                 
                 <div class="all-sites-section">
                     <a href="#" class="all-sites-btn" onclick="showExample()">
-                        🌐 جميع المواقع
+                        🌐 All Websites
                     </a>
                 </div>
             </div>
         </div>
 
         <div class="footer">
-            <p>&copy; 2025 NOVA SELECT - جميع الحقوق محفوظة</p>
+            <p>&copy; 2025 NOVA SELECT - All Rights Reserved</p>
         </div>
     </div>
 
     <script>
-        // متغيرات عامة
-        let cursorShadow = document.getElementById('cursor-shadow');
-        let protectionPage = document.getElementById('protectionPage');
-        let mainPage = document.getElementById('mainPage');
-        let timer = document.getElementById('timer');
+        // Advanced protection system
+        (function() {
+            'use strict';
+            
+            // Protection variables
+            let protectionActive = true;
+            let cursorShadow = document.getElementById('cursor-shadow');
+            let protectionPage = document.getElementById('protectionPage');
+            let mainPage = document.getElementById('mainPage');
+            let timer = document.getElementById('timer');
 
-        // إنشاء النجوم
-        function createStars() {
-            const starsDiv = document.getElementById('stars');
-            for (let i = 0; i < 100; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.animationDelay = Math.random() * 2 + 's';
-                starsDiv.appendChild(star);
+            // Disable all debugging and inspection tools
+            const protectionMethods = {
+                // Disable developer tools
+                disableDevTools: function() {
+                    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+C, Ctrl+U
+                    document.addEventListener('keydown', function(e) {
+                        if (e.key === 'F12' || 
+                            (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C' || e.key === 'J')) ||
+                            (e.ctrlKey && e.key === 'U') ||
+                            (e.ctrlKey && e.key === 'S') ||
+                            (e.ctrlKey && e.key === 'A') ||
+                            (e.ctrlKey && e.key === 'P') ||
+                            (e.key === 'F3') ||
+                            (e.ctrlKey && e.key === 'F') ||
+                            (e.ctrlKey && e.key === 'H') ||
+                            (e.ctrlKey && e.key === 'R') ||
+                            (e.key === 'F5') ||
+                            (e.ctrlKey && e.key === 'F5')) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
+                    }, true);
+                },
+
+                // Disable right click
+                disableRightClick: function() {
+                    document.addEventListener('contextmenu', function(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        return false;
+                    }, true);
+                },
+
+                // Disable text selection and drag
+                disableSelection: function() {
+                    document.addEventListener('selectstart', function(e) {
+                        e.preventDefault();
+                        return false;
+                    }, true);
+                    
+                    document.addEventListener('dragstart', function(e) {
+                        e.preventDefault();
+                        return false;
+                    }, true);
+                },
+
+                // Disable print
+                disablePrint: function() {
+                    window.addEventListener('beforeprint', function(e) {
+                        e.preventDefault();
+                        return false;
+                    }, true);
+                    
+                    window.addEventListener('print', function(e) {
+                        e.preventDefault();
+                        return false;
+                    }, true);
+                },
+
+                // Disable save as
+                disableSaveAs: function() {
+                    document.addEventListener('keydown', function(e) {
+                        if (e.ctrlKey && e.key === 's') {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            return false;
+                        }
+                    }, true);
+                },
+
+                // Detect developer tools
+                detectDevTools: function() {
+                    let devtools = {open: false, orientation: null};
+                    const threshold = 160;
+                    
+                    setInterval(function() {
+                        if (window.screen.availHeight - window.innerHeight > threshold || 
+                            window.screen.availWidth - window.innerWidth > threshold) {
+                            if (!devtools.open) {
+                                devtools.open = true;
+                                document.body.style.display = 'none';
+                            }
+                        } else {
+                            if (devtools.open) {
+                                devtools.open = false;
+                                document.body.style.display = 'block';
+                            }
+                        }
+                    }, 500);
+                },
+
+                // Disable console
+                disableConsole: function() {
+                    if (typeof console !== 'undefined') {
+                        console.log = console.warn = console.error = console.info = console.debug = console.trace = function() {};
+                    }
+                },
+
+                // Anti-debugging
+                antiDebug: function() {
+                    let start = Date.now();
+                    debugger;
+                    if (Date.now() - start > 100) {
+                        document.body.style.display = 'none';
+                    }
+                    setTimeout(this.antiDebug.bind(this), 1000);
+                }
+            };
+
+            // Initialize all protection methods
+            Object.values(protectionMethods).forEach(method => {
+                try {
+                    method();
+                } catch (e) {
+                    // Silent error handling
+                }
+            });
+
+            // Create stars
+            function createStars() {
+                const starsDiv = document.getElementById('stars');
+                for (let i = 0; i < 100; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDelay = Math.random() * 2 + 's';
+                    starsDiv.appendChild(star);
+                }
             }
-        }
 
-        // إنشاء التأثيرات المتلألئة
-        function createSparkle() {
-            const sparkle = document.createElement('div');
-            sparkle.className = 'sparkle';
-            sparkle.style.left = Math.random() * 100 + '%';
-            sparkle.style.top = Math.random() * 100 + '%';
-            document.body.appendChild(sparkle);
-            
-            setTimeout(() => {
-                sparkle.remove();
-            }, 2000);
-        }
-
-        // التحقق من المصدر
-        function checkReferrer() {
-            const referrer = document.referrer;
-            const currentUrl = window.location.href;
-            
-            // السماح بالوصول إذا أتى من NOVA LITE OS
-            if (referrer && referrer.includes('nova-lite-os.github.io/NOVA-LITE-OS')) {
-                return true;
-            }
-            
-            // السماح بالوصول المحلي للاختبار
-            if (currentUrl.includes('localhost') || currentUrl.includes('127.0.0.1')) {
-                return true;
-            }
-            
-            return false;
-        }
-
-        // العد التنازلي
-        function startCountdown() {
-            let timeLeft = 10;
-            
-            const countdown = setInterval(() => {
-                timeLeft--;
-                timer.textContent = timeLeft;
+            // Create sparkle effects
+            function createSparkle() {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.left = Math.random() * 100 + '%';
+                sparkle.style.top = Math.random() * 100 + '%';
+                document.body.appendChild(sparkle);
                 
-                if (timeLeft <= 0) {
-                    clearInterval(countdown);
-                    window.location.href = 'https://nova-lite-os.github.io/NOVA-LITE-OS/';
+                setTimeout(() => {
+                    sparkle.remove();
+                }, 2000);
+            }
+
+            // Check referrer
+            function checkReferrer() {
+                const referrer = document.referrer;
+                const currentUrl = window.location.href;
+                
+                // Allow access if coming from NOVA LITE OS
+                if (referrer && referrer.includes('nova-lite-os.github.io/NOVA-LITE-OS')) {
+                    return true;
+                }
+                
+                // Allow local access for testing
+                if (currentUrl.includes('localhost') || currentUrl.includes('127.0.0.1')) {
+                    return true;
+                }
+                
+                return false;
+            }
+
+            // Countdown timer
+            function startCountdown() {
+                let timeLeft = 10;
+                
+                const countdown = setInterval(() => {
+                    timeLeft--;
+                    if (timer) timer.textContent = timeLeft;
+                    
+                    if (timeLeft <= 0) {
+                        clearInterval(countdown);
+                        window.location.href = 'https://nova-lite-os.github.io/NOVA-LITE-OS/';
+                    }
+                }, 1000);
+            }
+
+            // Setup custom cursor
+            function setupCustomCursor() {
+                if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+                    document.addEventListener('mousemove', function(e) {
+                        if (cursorShadow) {
+                            cursorShadow.style.left = (e.clientX - 10) + 'px';
+                            cursorShadow.style.top = (e.clientY - 10) + 'px';
+                        }
+                    });
+
+                    document.addEventListener('mouseleave', function() {
+                        if (cursorShadow) cursorShadow.style.opacity = '0';
+                    });
+
+                    document.addEventListener('mouseenter', function() {
+                        if (cursorShadow) cursorShadow.style.opacity = '1';
+                    });
+                }
+            }
+
+            // Show main page
+            function showMainPage() {
+                if (protectionPage) protectionPage.style.display = 'none';
+                if (mainPage) mainPage.style.display = 'block';
+                
+                // Card appearance effect
+                const cards = document.querySelectorAll('.download-card');
+                cards.forEach((card, index) => {
+                    card.style.animationDelay = `${index * 0.2}s`;
+                    card.style.animation = 'fadeInUp 0.8s ease forwards';
+                });
+            }
+
+            // Example function
+            window.showExample = function() {
+                // Silent handling - no alerts or messages
+                return false;
+            };
+
+            // Run code when page loads
+            window.addEventListener('load', function() {
+                // Create stars and effects
+                createStars();
+                setupCustomCursor();
+                
+                // Create sparkle effects every second
+                setInterval(createSparkle, 1000);
+                
+                // Check referrer
+                if (checkReferrer()) {
+                    // If referrer is correct, show main page directly
+                    showMainPage();
+                } else {
+                    // If referrer is incorrect, show protection page and start countdown
+                    startCountdown();
+                }
+            });
+
+            // Add CSS for animations
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes fadeInUp {
+                    from {
+                        opacity: 0;
+                        transform: translateY(30px);
+                    }
+                    to {
+                        opacity: 1;
+                        transform: translateY(0);
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+
+            // Additional protection layers
+            setInterval(function() {
+                // Check if protection is still active
+                if (!protectionActive) {
+                    document.body.style.display = 'none';
                 }
             }, 1000);
-        }
 
-        // إعداد المؤشر المخصص
-        function setupCustomCursor() {
-            if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-                document.addEventListener('mousemove', function(e) {
-                    cursorShadow.style.left = (e.clientX - 10) + 'px';
-                    cursorShadow.style.top = (e.clientY - 10) + 'px';
-                });
-
-                document.addEventListener('mouseleave', function() {
-                    cursorShadow.style.opacity = '0';
-                });
-
-                document.addEventListener('mouseenter', function() {
-                    cursorShadow.style.opacity = '1';
-                });
-            }
-        }
-
-        // عرض الصفحة الرئيسية
-        function showMainPage() {
-            protectionPage.style.display = 'none';
-            mainPage.style.display = 'block';
-            
-            // تأثير ظهور البطاقات
-            const cards = document.querySelectorAll('.download-card');
-            cards.forEach((card, index) => {
-                card.style.animationDelay = `${index * 0.2}s`;
-                card.style.animation = 'fadeInUp 0.8s ease forwards';
-            });
-        }
-
-        // مثال للتوضيح
-        function showExample() {
-            alert('هذا مثال للتوضيح - يرجى استبدال الروابط بالروابط الفعلية الخاصة بك');
-        }
-
-        // منع النقر بزر الماوس الأيمن
-        document.addEventListener('contextmenu', function(e) {
-            e.preventDefault();
-        });
-
-        // منع اختصارات المطورين
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'F12' || 
-                (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'C')) ||
-                (e.ctrlKey && e.key === 'U')) {
-                e.preventDefault();
-            }
-        });
-
-        // تشغيل الكود عند تحميل الصفحة
-        window.addEventListener('load', function() {
-            // إنشاء النجوم والتأثيرات
-            createStars();
-            setupCustomCursor();
-            
-            // إنشاء التأثيرات المتلألئة كل ثانية
-            setInterval(createSparkle, 1000);
-            
-            // التحقق من المصدر
-            if (checkReferrer()) {
-                // إذا كان المصدر صحيح، عرض الصفحة الرئيسية مباشرة
-                showMainPage();
-            } else {
-                // إذا كان المصدر غير صحيح، عرض صفحة الحماية وبدء العد التنازلي
-                startCountdown();
-            }
-        });
-
-        // إضافة CSS للرسوم المتحركة
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeInUp {
-                from {
-                    opacity: 0;
-                    transform: translateY(30px);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0);
-                }
-            }
-        `;
-        document.head.appendChild(style);
+        })();
     </script>
 </body>
 </html>
